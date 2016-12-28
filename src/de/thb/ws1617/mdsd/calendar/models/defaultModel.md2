@@ -1,0 +1,132 @@
+package de.thb.ws1617.mdsd.calendar.models
+
+/*
+ * Implement the model here
+ */
+ entity Ersteller {
+ 	id: string (identifier)
+ 	email: string {
+ 		name "Mail-Adresse"
+ 		description "Email-Adresse des Erstellers"
+ 	}
+ 	displayName: string (optional) {
+ 		name "Ersteller"
+ 		description "Ersteller des Termins"
+ 	}
+ 	self: boolean
+ }
+ 
+ enum Zeitzonen {
+ 	"UTC",
+ 	"UTC + 1",
+ 	"UTC + 2",
+ 	"UTC + 3",
+ 	"UTC + 4",
+ 	"UTC + 5",
+ 	"UTC + 6",
+ 	"UTC + 7",
+ 	"UTC + 8",
+ 	"UTC + 9",
+ 	"UTC + 10",
+ 	"UTC + 11",
+ 	"UTC + 12",
+ 	"UTC + 13",
+ 	"UTC + 14",
+ 	"UTC - 1",
+ 	"UTC - 2",
+ 	"UTC - 3",
+ 	"UTC - 4",
+ 	"UTC - 5",
+ 	"UTC - 6",
+ 	"UTC - 7",
+ 	"UTC - 8",
+ 	"UTC - 9",
+ 	"UTC - 10",
+ 	"UTC - 11"
+ }
+ 
+ entity Zeit {
+ 	datum: date
+ 	zeit: time
+ 	zeitzone: Zeitzonen
+ }
+ 
+ entity Teilnehmer {
+ 	id: string (identifier)
+ 	email: string
+ 	displayName: string
+ 	organisator: boolean
+ 	self: boolean
+ 	optional: boolean
+ 	status: string
+ 	kommentar: string
+ 	zusaetzliche_gaeste: integer
+ }
+ 
+ entity Gadget {
+ 	type: string
+ 	title: string
+ 	link: string
+ 	iconLink: string
+ 	breite: integer
+ 	hoehe: integer
+ 	display: string
+ }
+ 
+ entity Termin {
+	kind: string
+	etag: integer
+	id: string (identifier)
+	status: string {
+		description "Status des Termins"
+	}
+	htmlLink: string
+	created: time
+	updated: time
+	summary: string {
+		description "Zusammenfassung des Events"
+	}
+	descrip: string {
+		name "Beschreibung"
+		description "Beschreibung des Events"
+	}
+	location: string
+	colorId: string
+	creator: Ersteller
+	organizer: Ersteller
+	start: Zeit
+	end: Zeit
+	endTimeUnspecified: boolean
+	recurrence: string []
+	recurringEventId: string
+	originalStartTime: Zeit
+	transparency: string
+	visibility: string
+	iCalUID: string
+	sequence: integer
+	attendees: Teilnehmer []
+	attendeesOmitted: boolean
+	gadget: Gadget
+	anyoneCanAddSelf: boolean
+	guestsCanInviteOthers: boolean
+	guestsCanModify: boolean
+	guestsCanSeeOtherGuests: boolean
+	privateCopy: boolean
+	locked: boolean
+ }
+ 
+ entity Kalender {
+ 	desc: string (optional)
+ 	location: string (optional)
+ 	summary: string
+ 	timeZone: Zeitzonen (optional)
+ }
+ 
+ entity Kalenderliste {
+ 	bgColor: string (optional)
+ 	colorId: string (optional)
+ 	fgColor: string (optional)
+ 	hidden: boolean (optional)
+ 	selected: boolean (optional)
+ 	summaryOverride: string (optional)
+ }
