@@ -3,31 +3,19 @@ package de.thb.ws1617.mdsd.calendar.controllers
 /*
  * Implement the controller here
  */
- main {
- 	appName "THB Kalender"
- 	appVersion "0.1"
- 	modelVersion "0.1"
- 	startView ShowCalendarView
- 	onInitialized startApp
- }
- 
- contentProvider Termin terminProvider {
- 	providerType local
- }
- 
- action CustomAction loadCalendarAction {
- 	call DataAction (load terminProvider)
- }
- 
- action CustomAction saveEventAction {
- 	call DataAction (save terminProvider)
- }
- 
- action CustomAction startApp {
- 	bind action loadCalendarAction on InsertEventView.saveButton.onTouch
- 	bind action saveEventAction on InsertEventView.saveButton.onTouch
- 	map InsertEventView.title to terminProvider.summary
- 	map InsertEventView.beschreibung to terminProvider.descrip
- 	map InsertEventView.start to terminProvider.start.zeit
- 	map InsertEventView.ende to terminProvider.end.zeit
- }
+main {
+    appName "THB Kalender"
+    appVersion "0.1"
+    modelVersion "0.1"
+    startView InsertEventView
+    onInitialized init
+}
+
+contentProvider Termin localTestStore {
+    providerType local
+}
+
+action CustomAction init {
+    bind action DataAction(load localTestStore) on InsertEventView.loadBtn.onTouch
+    bind action DataAction(save localTestStore) on InsertEventView.saveBtn.onTouch
+}
