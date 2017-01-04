@@ -81,8 +81,8 @@ package de.thb.ws1617.mdsd.calendar.models
 		description "Status des Termins"
 	}
 	htmlLink: string
-	created: time
-	updated: time
+	created: Zeit
+	updated: Zeit
 	summary: string {
 		description "Zusammenfassung des Events"
 	}
@@ -94,8 +94,12 @@ package de.thb.ws1617.mdsd.calendar.models
 	colorId: string
 	creator: Ersteller
 	organizer: Ersteller
-	start: Zeit
-	end: Zeit
+	start: Zeit {
+		name "Start"
+	}
+	end: Zeit {
+		name "Ende"
+	}
 	endTimeUnspecified: boolean
 	recurrence: string []
 	recurringEventId: string
@@ -122,11 +126,11 @@ package de.thb.ws1617.mdsd.calendar.models
  	timeZone: Zeitzonen (optional)
  }
  
- entity Kalenderliste {
+/* entity Kalenderliste {
  	bgColor: string (optional)
  	colorId: string (optional)
  	fgColor: string (optional)
  	hidden: boolean (optional)
  	selected: boolean (optional)
  	summaryOverride: string (optional)
- }
+ }*/
