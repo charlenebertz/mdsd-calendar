@@ -3,40 +3,19 @@ package de.thb.ws1617.mdsd.calendar.views
 /*
  * Implement the view here
  */
-	FlowLayoutPane ShowCalendarView {
-		AutoGenerator getEventsGenerator {
-			contentProvider terminProvider
-		}
-		
-		Button loadButton ("Lade Termine")
-	}
-	FlowLayoutPane InsertEventView {
+TabbedPane KalenderView {
+	InsertEventView -> Main (tabTitle "Neuer Termin")
+	OverviewView
+}
+
+FlowLayoutPane InsertEventView(vertical) {
+    AutoGenerator testEntityGen {
+        contentProvider localTestStore
+    }
+    Button loadBtn("Load")
+    Button saveBtn("Save")
+}
+
+FlowLayoutPane OverviewView(vertical) {
 	
-	TextInput title {
-		label "Name"
-	}
-	
-	TextInput start {
-		label "Start"
-		type timestamp
-	}
-	
-	TextInput ende {
-		label "Ende"
-		type timestamp
-	}
-	
-	TextInput beschreibung {
-		label "Beschreibung"
-	}
-	
-	Spacer
-	
-	Button saveButton ("Speichere Termin")
-	
-	}
-	TabbedPane KalenderView {
-		ShowCalendarView -> Main (tabTitle "Kalender")
-		InsertEventView(tabTitle "Termin einfügen")
- }
- 
+}
