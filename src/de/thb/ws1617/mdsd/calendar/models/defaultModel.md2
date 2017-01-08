@@ -5,11 +5,11 @@ package de.thb.ws1617.mdsd.calendar.models
  */
  entity Ersteller {
  	id: string (identifier)
- 	email: string {
+ 	email: string  { //writable
  		name "Mail-Adresse"
  		description "Email-Adresse des Erstellers"
  	}
- 	displayName: string (optional) {
+ 	displayName: string (optional)  { ////writable
  		name "Ersteller"
  		description "Ersteller des Termins"
  	}
@@ -46,54 +46,54 @@ package de.thb.ws1617.mdsd.calendar.models
  }
  
  entity Zeit {
- 	datum: date
- 	zeit: time
- 	zeitzone: Zeitzonen
+ 	datum: date //writable
+ 	zeit: time //writable
+ 	zeitzone: Zeitzonen //writable
  }
  
  entity Teilnehmer {
  	id: string (identifier)
  	email: string
- 	displayName: string
+ 	displayName: string //writable
  	organisator: boolean
  	self: boolean
- 	optional: boolean
- 	status: string
- 	kommentar: string
- 	zusaetzliche_gaeste: integer
+ 	optional: boolean //writable
+ 	status: string //writable
+ 	kommentar: string //writable
+ 	zusaetzliche_gaeste: integer //writable
  }
  
  entity Gadget {
- 	type: string
- 	title: string
- 	link: string
- 	iconLink: string
- 	breite: integer
- 	hoehe: integer
- 	display: string
+ 	type: string //writable
+ 	title: string //writable
+ 	link: string //writable
+ 	iconLink: string //writable
+ 	breite: integer //writable
+ 	hoehe: integer (optional) //writable
+ 	display: string //writable
  }
  
  entity Termin {
 	kind: string
 	etag: integer
-	id: string (identifier)
-	status: string {
+	id: string (identifier) //writable
+	status: string { //writable
 		description "Status des Termins"
 	}
-	htmlLink: string
+	htmlLink: string 
 	created: Zeit
 	updated: Zeit
-	summary: string {
+	summary: string { //writable
 		description "Zusammenfassung des Events"
 	}
-	descrip: string {
+	descrip: string { //writable
 		name "Beschreibung"
 		description "Beschreibung des Events"
 	}
-	location: string
-	colorId: string
+	location: string //writable
+	colorId: string //writable
 	creator: Ersteller
-	organizer: Ersteller
+	organizer: Ersteller //writable
 	start: Zeit {
 		name "Start"
 	}
@@ -101,20 +101,20 @@ package de.thb.ws1617.mdsd.calendar.models
 		name "Ende"
 	}
 	endTimeUnspecified: boolean
-	recurrence: string []
+	recurrence: string [] //writable
 	recurringEventId: string
 	originalStartTime: Zeit
-	transparency: string
-	visibility: string
+	transparency: string //writable
+	visibility: string //writable
 	iCalUID: string
 	sequence: integer
-	attendees: Teilnehmer []
-	attendeesOmitted: boolean
+	attendees: Teilnehmer [] //writable
+	attendeesOmitted: boolean //writable
 	gadget: Gadget
-	anyoneCanAddSelf: boolean
-	guestsCanInviteOthers: boolean
+	anyoneCanAddSelf: boolean //writable
+	guestsCanInviteOthers: boolean //writable
 	guestsCanModify: boolean
-	guestsCanSeeOtherGuests: boolean
+	guestsCanSeeOtherGuests: boolean //writable
 	privateCopy: boolean
 	locked: boolean
  }

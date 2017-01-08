@@ -8,9 +8,9 @@ TabbedPane KalenderView {
 	OverviewView
 }
 
-FlowLayoutPane InsertEventView(vertical) {
+GridLayoutPane InsertEventView (columns 3) {
     AutoGenerator testEntityGen {
-        contentProvider localTestStore
+        contentProvider localTestStore //insert only|exclude here
     }
     Button loadBtn("Load")
     Button saveBtn("Save")
