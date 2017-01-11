@@ -3,19 +3,89 @@ package de.thb.ws1617.mdsd.calendar.views
 /*
  * Implement the view here
  */
-TabbedPane KalenderView {
-	InsertEventView -> Main (tabTitle "Neuer Termin")
-	OverviewView
-}
 
-GridLayoutPane InsertEventView (columns 3) {
+/*GridLayoutPane InsertEventView (columns 3) {
     AutoGenerator testEntityGen {
         contentProvider localTestStore //insert only|exclude here
     }
     Button loadBtn("Load")
     Button saveBtn("Save")
+}*/
+
+GridLayoutPane BasicInsertView (columns 1) {
+	TextInput SumInput {
+		label "Zusammenfassung"
+		tooltip "Wird als Name Verwendet"
+	}
+	TextInput StartInput {
+		label "Start"
+		type timestamp
+	}
+	TextInput EndInput {
+		label "Ende"
+		type timestamp
+	}
+	OptionInput ZonenInput {
+		label "Zeitzone"
+		options Zeitzonen
+	}
+	TextInput LocationInput {
+		label "Ort"
+	}
+	TextInput DescriptionInput {
+		label "Beschreibung"
+	}
+	TextInput StatusInput {
+		label "Status"
+	}
+	CheckBox AnyAddSelfCheck {
+		label "Kann jeder sich selbst als Teilnehmer hinzufügen?"
+	}
+	CheckBox InviteOthersCheck {
+		label "Können Teilnehmer weitere Teilnehmer hinzufügen?"
+	}
+	CheckBox GuestsSeeGuestsCheck {
+		label "Können Teilnehmer andere Teilnehmer sehen?"
+	}
+	Button saveBtn("Save")
 }
 
-FlowLayoutPane OverviewView(vertical) {
+GridLayoutPane AdvancedInsertView (columns 1) {
+	TextInput ColorInput {
+		label "Farbe"
+		tooltip "Wird mit dieser Farbe im Kalender angezeigt"
+	}
+	TextInput TransparenzInput {
+		label "Transparenz"
+	}
+	TextInput SichtbarkeitInput {
+		label "Sichtbarkeit"
+	}
 	
+	Label Zusatz ("Zusätzlicher Teilnehmer")
+	
+	TextInput TeilNameInput {
+		label "Name des Teilnehmers"
+	}
+	
+	TextInput TeilStatusInput {
+		label "Status des Teilnehmers"
+	}
+	
+	CheckBox TeilOptionalCheck {
+		label "Teilnahme optional"
+	}
+	TextInput TeilGaesteInput {
+		label "Anzahl zusätzlicher Gäste"
+	}
+}
+
+GridLayoutPane OverviewView(columns 1) {
+	
+}
+
+TabbedPane KalenderView {
+	BasicInsertView -> Main (tabTitle "In")
+	AdvancedInsertView (tabTitle "InAdv")
+	OverviewView (tabTitle "Over")
 }
