@@ -4,8 +4,8 @@ package de.thb.ws1617.mdsd.calendar.models
  * Implement the model here
  */
  entity Ersteller {
- 	id: string (identifier)
- 	email: string  { //writable
+ 	id: string (optional)
+ 	email: string (optional)  { //writable
  		name "Mail-Adresse"
  		description "Email-Adresse des Erstellers"
  	}
@@ -13,7 +13,7 @@ package de.thb.ws1617.mdsd.calendar.models
  		name "Ersteller"
  		description "Ersteller des Termins"
  	}
- 	self: boolean
+ 	self: boolean (optional)
  }
  
  enum Zeitzonen {
@@ -46,83 +46,83 @@ package de.thb.ws1617.mdsd.calendar.models
  }
  
  entity Zeit {
- 	datum: date //writable
- 	zeit: time //writable
- 	zeitzone: Zeitzonen //writable
+ 	datum: date (optional) //writable
+ 	zeit: time (optional) //writable
+ 	zeitzone: Zeitzonen (optional) //writable
  }
  
  entity Teilnehmer {
- 	id: string (identifier)
- 	email: string
- 	displayName: string //writable
- 	organisator: boolean
- 	self: boolean
- 	optional: boolean //writable
- 	status: string //writable
- 	kommentar: string //writable
- 	zusaetzliche_gaeste: integer //writable
+ 	id: string (optional)
+ 	email: string (optional)
+ 	displayName: string (optional) //writable
+ 	organisator: boolean (optional)
+ 	self: boolean (optional)
+ 	optional: boolean (optional) //writable
+ 	status: string (optional) //writable
+ 	kommentar: string (optional) //writable
+ 	zusaetzliche_gaeste: integer (optional) //writable
  }
  
  entity Gadget {
- 	type: string //writable
- 	title: string //writable
- 	link: string //writable
- 	iconLink: string //writable
- 	breite: integer //writable
+ 	type: string (optional) //writable
+ 	title: string (optional) //writable
+ 	link: string (optional) //writable
+ 	iconLink: string (optional) //writable
+ 	breite: integer (optional) //writable
  	hoehe: integer (optional) //writable
- 	display: string //writable
+ 	display: string (optional) //writable
  }
  
  entity Termin {
-	kind: string
-	etag: integer
-	id: string (identifier) //writable
-	status: string { //writable
+	kind: string (optional)
+	etag: integer (optional)
+	id: string (optional) //writable
+	status: string (optional) { //writable
 		description "Status des Termins"
 	}
-	htmlLink: string 
-	created: Zeit
-	updated: Zeit
-	summary: string { //writable
+	htmlLink: string (optional)
+	created: Zeit (optional)
+	updated: Zeit (optional)
+	summary: string (optional) { //writable
 		description "Zusammenfassung des Events"
 	}
-	descrip: string { //writable
+	descrip: string (optional) { //writable
 		name "Beschreibung"
 		description "Beschreibung des Events"
 	}
-	location: string //writable
-	colorId: string //writable
-	creator: Ersteller
-	organizer: Ersteller //writable
-	start: Zeit {
+	location: string (optional) //writable
+	colorId: string (optional) //writable
+	creator: Ersteller (optional)
+	organizer: Ersteller (optional) //writable
+	start: Zeit (optional) {
 		name "Start"
 	}
-	end: Zeit {
+	end: Zeit (optional) {
 		name "Ende"
 	}
-	endTimeUnspecified: boolean
-	recurrence: string [] //writable
-	recurringEventId: string
-	originalStartTime: Zeit
-	transparency: string //writable
-	visibility: string //writable
-	iCalUID: string
-	sequence: integer
-	attendees: Teilnehmer [] //writable
-	attendeesOmitted: boolean //writable
-	gadget: Gadget
-	anyoneCanAddSelf: boolean //writable
-	guestsCanInviteOthers: boolean //writable
-	guestsCanModify: boolean
+	endTimeUnspecified: boolean (optional)
+	recurrence: string (optional) //writable
+	recurringEventId: string (optional)
+	originalStartTime: Zeit (optional)
+	transparency: string (optional) //writable
+	visibility: string (optional) //writable
+	iCalUID: string (optional)
+	sequence: integer (optional)
+	attendees: Teilnehmer (optional) //writable
+	attendeesOmitted: boolean (optional) //writable
+	gadget: Gadget (optional)
+	anyoneCanAddSelf: boolean (optional) //writable
+	guestsCanInviteOthers: boolean (optional) //writable
+	guestsCanModify: boolean (optional)
 	guestsCanSeeOtherGuests: boolean //writable
-	privateCopy: boolean
-	locked: boolean
+	privateCopy: boolean (optional)
+	locked: boolean (optional)
  }
  
  entity Kalender {
  	desc: string (optional)
  	location: string (optional)
- 	summary: string
+ 	summary: string (optional)
  	timeZone: Zeitzonen (optional)
  }
  
