@@ -7,7 +7,7 @@ main {
     appName "THB Kalender"
     appVersion "0.1"
     modelVersion "0.1"
-    startView InsertEventView
+    startView KalenderView
     onInitialized init
 }
 
@@ -16,6 +16,7 @@ contentProvider Termin localTestStore {
 }
 
 action CustomAction init {
-    bind action DataAction(load localTestStore) on InsertEventView.loadBtn.onTouch
-    bind action DataAction(save localTestStore) on InsertEventView.saveBtn.onTouch
+	map BasicInsertView.SumInput to localTestStore.summary
+	map AdvancedInsertView.TeilNameInput to localTestStore.attendees.displayName
+    bind action DataAction(save localTestStore) on BasicInsertView.saveBtn.onTouch
 }
