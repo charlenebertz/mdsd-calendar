@@ -57,7 +57,7 @@ package de.thb.ws1617.mdsd.calendar.models
  	displayName: string (optional) //writable
  	organisator: boolean (optional)
  	self: boolean (optional)
- 	optional: boolean (optional) //writable
+ 	optional_teil: boolean (optional) //writable
  	status: string (optional) //writable
  	kommentar: string (optional) //writable
  	zusaetzliche_gaeste: integer (optional) //writable
