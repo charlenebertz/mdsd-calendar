@@ -13,10 +13,43 @@ main {
 
 contentProvider Termin localTestStore {
     providerType local
+    filter first where Termin.start.datum equals OverviewView.suchInput or Termin.end.datum equals OverviewView.suchInput
+}
+
+action CustomAction saveData {
+	 call DataAction(save localTestStore)
+	 call NewObjectAction (localTestStore)
+}
+
+action CustomAction loadData {
+	 call DataAction(load localTestStore)
 }
 
 action CustomAction init {
+	
 	map BasicInsertView.SumInput to localTestStore.summary
+	map BasicInsertView.StartInput to localTestStore.start.datum
+	map BasicInsertView.StartTimeInput to localTestStore.start.zeit
+	map BasicInsertView.EndInput to localTestStore.end.datum
+	map BasicInsertView.EndTimeInput to localTestStore.start.zeit
+	map BasicInsertView.ZonenInput to localTestStore.start.zeitzone
+	map BasicInsertView.ZonenInput to localTestStore.end.zeitzone
+	map BasicInsertView.LocationInput to localTestStore.location
+	map BasicInsertView.DescriptionInput to localTestStore.descrip
+	map BasicInsertView.StatusInput to localTestStore.status
+	map BasicInsertView.AnyAddSelfCheck to localTestStore.anyoneCanAddSelf
+	map BasicInsertView.InviteOthersCheck to localTestStore.guestsCanInviteOthers
+	map BasicInsertView.GuestsSeeGuestsCheck to localTestStore.guestsCanSeeOtherGuests
+	
 	map AdvancedInsertView.TeilNameInput to localTestStore.attendees.displayName
-    bind action DataAction(save localTestStore) on BasicInsertView.saveBtn.onTouch
+	map AdvancedInsertView.ColorInput to localTestStore.colorId
+	map AdvancedInsertView.TransparenzInput to localTestStore.transparency
+	map AdvancedInsertView.SichtbarkeitInput to localTestStore.visibility
+	map AdvancedInsertView.TeilStatusInput to localTestStore.attendees.status
+	map AdvancedInsertView.TeilOptionalCheck to localTestStore.attendees.optional_teil
+	map AdvancedInsertView.TeilGaesteInput to localTestStore.attendees.zusaetzliche_gaeste
+	
+    bind action saveData on BasicInsertView.saveBtn.onTouch
+    bind action loadData on OverviewView.loadBtn.onTouch
+    bind validator IsNumberValidator on AdvancedInsertView.TeilGaesteInput
 }
