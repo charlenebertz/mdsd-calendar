@@ -4,27 +4,31 @@ package de.thb.ws1617.mdsd.calendar.views
  * Implement the view here
  */
 
-/*GridLayoutPane InsertEventView (columns 3) {
-    AutoGenerator testEntityGen {
-        contentProvider localTestStore //insert only|exclude here
-    }
-    Button loadBtn("Load")
-    Button saveBtn("Save")
-}*/
-
 GridLayoutPane BasicInsertView (columns 1) {
 	TextInput SumInput {
 		label "Zusammenfassung"
 		tooltip "Wird als Name Verwendet"
 	}
 	TextInput StartInput {
-		label "Start"
-		type timestamp
+		label "Startdatum"
+		type date
 	}
+	
+	TextInput StartTimeInput {
+		label "Startzeit"
+		type time
+	}
+	
 	TextInput EndInput {
-		label "Ende"
-		type timestamp
+		label "Enddatum"
+		type date
 	}
+	
+	TextInput EndTimeInput {
+		label "Endzeit"
+		type time
+	}
+	
 	OptionInput ZonenInput {
 		label "Zeitzone"
 		options Zeitzonen
@@ -81,11 +85,18 @@ GridLayoutPane AdvancedInsertView (columns 1) {
 }
 
 GridLayoutPane OverviewView(columns 1) {
-	
+	TextInput suchInput {
+		label "Suche nach Datum"
+		type date
+	}
+	AutoGenerator suchErgebnisAnzeige {
+		contentProvider localTestStore (only Termin.summary)
+	}
+	Button loadBtn("Suche Termine")
 }
 
 TabbedPane KalenderView {
-	BasicInsertView -> Main (tabTitle "In")
+	BasicInsertView (tabTitle "In")
 	AdvancedInsertView (tabTitle "InAdv")
-	OverviewView (tabTitle "Over")
+	OverviewView -> Main (tabTitle "Over")
 }
