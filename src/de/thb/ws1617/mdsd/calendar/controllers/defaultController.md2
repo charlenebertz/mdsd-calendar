@@ -13,7 +13,7 @@ main {
 
 contentProvider Termin localTestStore {
     providerType local
-    filter first where Termin.start.datum equals OverviewView.suchInput or Termin.end.datum equals OverviewView.suchInput
+    filter first where Termin.start.datum >= OverviewView.suchInputDate or Termin.end.datum <= OverviewView.suchInputDate
 }
 
 action CustomAction saveData {
@@ -51,5 +51,13 @@ action CustomAction init {
 	
     bind action saveData on BasicInsertView.saveBtn.onTouch
     bind action loadData on OverviewView.loadBtn.onTouch
+    
     bind validator IsNumberValidator on AdvancedInsertView.TeilGaesteInput
+    bind validator IsDateValidator on BasicInsertView.StartInput
+    bind validator IsDateValidator on BasicInsertView.EndInput
+    bind validator NotNullValidator on BasicInsertView.SumInput
+    bind validator NotNullValidator on BasicInsertView.StartInput
+    bind validator NotNullValidator on BasicInsertView.EndInput
+    bind validator NotNullValidator on BasicInsertView.DescriptionInput
+    
 }
