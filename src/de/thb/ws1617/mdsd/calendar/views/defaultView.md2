@@ -7,7 +7,7 @@ package de.thb.ws1617.mdsd.calendar.views
 GridLayoutPane BasicInsertView (columns 1) {
 	TextInput SumInput {
 		label "Zusammenfassung"
-		tooltip "Wird als Name Verwendet"
+		tooltip "Wird als Name des Termins Verwendet"
 	}
 	TextInput StartInput {
 		label "Startdatum"
@@ -51,6 +51,9 @@ GridLayoutPane BasicInsertView (columns 1) {
 	CheckBox GuestsSeeGuestsCheck {
 		label "Können Teilnehmer andere Teilnehmer sehen?"
 	}
+	
+	Spacer
+	
 	Button saveBtn("Save")
 }
 
@@ -85,18 +88,20 @@ GridLayoutPane AdvancedInsertView (columns 1) {
 }
 
 GridLayoutPane OverviewView(columns 1) {
-	TextInput suchInput {
+	TextInput suchInputDate {
 		label "Suche nach Datum"
 		type date
 	}
+	Spacer(2)
+	
 	AutoGenerator suchErgebnisAnzeige {
-		contentProvider localTestStore (only Termin.summary)
+		contentProvider localTestStore (only Termin.summary Termin.descrip Termin.start Termin.end Termin.location)
 	}
 	Button loadBtn("Suche Termine")
 }
 
 TabbedPane KalenderView {
+	OverviewView -> Main (tabTitle "Over")
 	BasicInsertView (tabTitle "In")
 	AdvancedInsertView (tabTitle "InAdv")
-	OverviewView -> Main (tabTitle "Over")
 }
