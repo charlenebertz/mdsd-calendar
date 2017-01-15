@@ -46,8 +46,8 @@ package de.thb.ws1617.mdsd.calendar.models
  }
  
  entity Zeit {
- 	datum: date (optional) //writable
- 	zeit: time (optional) //writable
+ 	datum: date //writable
+ 	zeit: time (optional)  //writable
  	zeitzone: Zeitzonen (optional) //writable
  }
  
@@ -83,10 +83,10 @@ package de.thb.ws1617.mdsd.calendar.models
 	htmlLink: string (optional)
 	created: Zeit (optional)
 	updated: Zeit (optional)
-	summary: string (optional) { //writable
+	summary: string { //writable
 		description "Zusammenfassung des Events"
 	}
-	descrip: string (optional) { //writable
+	descrip: string { //writable
 		name "Beschreibung"
 		description "Beschreibung des Events"
 	}
