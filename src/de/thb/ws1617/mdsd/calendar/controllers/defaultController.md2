@@ -11,7 +11,7 @@ main {
     onInitialized init
 }
 
-contentProvider Termin[] localTestStore {
+contentProvider Termin localTestStore {
     providerType local
     filter first where Termin.start.datum >= OverviewView.suchInputDate or Termin.end.datum <= OverviewView.suchInputDate
 }
