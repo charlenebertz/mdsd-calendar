@@ -11,7 +11,7 @@ main {
     onInitialized init
 }
 
-contentProvider Termin localTestStore {
+contentProvider Termin[] localTestStore {
     providerType local
     filter first where Termin.start.datum >= OverviewView.suchInputDate or Termin.end.datum <= OverviewView.suchInputDate
 }
@@ -51,6 +51,7 @@ action CustomAction init {
 	
     bind action saveData on BasicInsertView.saveBtn.onTouch
     bind action loadData on OverviewView.loadBtn.onTouch
+    bind action NewObjectAction(localTestStore) on BasicInsertView.resetBtn.onTouch
     
     bind validator IsNumberValidator on AdvancedInsertView.TeilGaesteInput
     bind validator IsDateValidator on BasicInsertView.StartInput

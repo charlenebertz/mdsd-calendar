@@ -54,7 +54,8 @@ GridLayoutPane BasicInsertView (columns 1) {
 	
 	Spacer
 	
-	Button saveBtn("Save")
+	Button saveBtn("Speichern")
+	Button resetBtn ("Neuer Termin")
 }
 
 GridLayoutPane AdvancedInsertView (columns 1) {
@@ -97,6 +98,7 @@ GridLayoutPane OverviewView(columns 1) {
 	AutoGenerator suchErgebnisAnzeige {
 		contentProvider localTestStore (only Termin.summary Termin.descrip Termin.start Termin.end Termin.location)
 	}
+	
 	Button loadBtn("Suche Termine")
 }
 
