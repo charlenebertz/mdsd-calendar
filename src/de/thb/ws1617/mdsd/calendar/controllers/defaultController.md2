@@ -31,7 +31,7 @@ action CustomAction init {
 	map BasicInsertView.StartInput to localTestStore.start.datum
 	map BasicInsertView.StartTimeInput to localTestStore.start.zeit
 	map BasicInsertView.EndInput to localTestStore.end.datum
-	map BasicInsertView.EndTimeInput to localTestStore.start.zeit
+	map BasicInsertView.EndTimeInput to localTestStore.end.zeit
 	map BasicInsertView.ZonenInput to localTestStore.start.zeitzone
 	map BasicInsertView.ZonenInput to localTestStore.end.zeitzone
 	map BasicInsertView.LocationInput to localTestStore.location
