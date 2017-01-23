@@ -76,6 +76,10 @@ GridLayoutPane AdvancedInsertView (columns 1) {
 		label "Name des Teilnehmers"
 	}
 	
+	TextInput TeilMailInput {
+		label "Email-Adresse des Teilnehmers"
+	}
+	
 	TextInput TeilStatusInput {
 		label "Status des Teilnehmers"
 	}

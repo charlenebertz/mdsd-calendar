@@ -48,6 +48,7 @@ action CustomAction init {
 	map AdvancedInsertView.TeilStatusInput to localTestStore.attendees.status
 	map AdvancedInsertView.TeilOptionalCheck to localTestStore.attendees.optional_teil
 	map AdvancedInsertView.TeilGaesteInput to localTestStore.attendees.zusaetzliche_gaeste
+	map AdvancedInsertView.TeilMailInput to localTestStore.attendees.email
 	
     bind action saveData on BasicInsertView.saveBtn.onTouch
     bind action loadData on OverviewView.loadBtn.onTouch
@@ -60,5 +61,6 @@ action CustomAction init {
     bind validator NotNullValidator on BasicInsertView.StartInput
     bind validator NotNullValidator on BasicInsertView.EndInput
     bind validator NotNullValidator on BasicInsertView.DescriptionInput
+    bind validator RegExValidator (regEx "[A-Za-z0-9._]?@[A-Za-z0-9]?.[a-z]{2,6}") on AdvancedInsertView.TeilMailInput
     
 }
